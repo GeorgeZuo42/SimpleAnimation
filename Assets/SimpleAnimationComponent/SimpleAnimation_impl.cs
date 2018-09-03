@@ -166,10 +166,10 @@ public partial class SimpleAnimation: MonoBehaviour
     protected bool m_PlayAutomatically = true;
 
     [SerializeField]
-    protected bool m_AnimatePhysics = false;
+    protected AnimatorUpdateMode m_UpdateMode = AnimatorUpdateMode.Normal;
 
     [SerializeField]
-    protected AnimatorCullingMode m_CullingMode = AnimatorCullingMode.CullUpdateTransforms;
+    protected AnimatorCullingMode m_CullingMode = AnimatorCullingMode.AlwaysAnimate;
 
     [SerializeField]
     protected WrapMode m_WrapMode;
@@ -214,7 +214,7 @@ public partial class SimpleAnimation: MonoBehaviour
             return;
 
         m_Animator = GetComponent<Animator>();
-        m_Animator.updateMode = m_AnimatePhysics ? AnimatorUpdateMode.AnimatePhysics : AnimatorUpdateMode.Normal;
+        m_Animator.updateMode = m_UpdateMode;
         m_Animator.cullingMode = m_CullingMode;
         m_Graph = PlayableGraph.Create();
         m_Graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
@@ -389,7 +389,7 @@ public partial class SimpleAnimation: MonoBehaviour
         }
 
         m_Animator = GetComponent<Animator>();
-        m_Animator.updateMode = m_AnimatePhysics ? AnimatorUpdateMode.AnimatePhysics : AnimatorUpdateMode.Normal;
+        m_Animator.updateMode = m_UpdateMode;
         m_Animator.cullingMode = m_CullingMode;
     }
 

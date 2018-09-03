@@ -33,10 +33,10 @@ public partial class SimpleAnimation: MonoBehaviour
         }
     }
 
-    public bool animatePhysics
+    public AnimatorUpdateMode updateMode
     {
-        get { return m_AnimatePhysics; }
-        set { m_AnimatePhysics = value; animator.updateMode = m_AnimatePhysics ? AnimatorUpdateMode.AnimatePhysics : AnimatorUpdateMode.Normal; }
+        get { return animator.updateMode; }
+        set { m_UpdateMode = value; animator.updateMode = m_UpdateMode; }
     }
 
     public AnimatorCullingMode cullingMode
